@@ -1,0 +1,8 @@
+[14-Mar-2023 13:05:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/jjfashion4u/public_html/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/jjfashion4u/public_html/config/broadcasting.php on line 18
+[14-Mar-2023 13:05:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/jjfashion4u/public_html/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/jjfashion4u/public_html/config/broadcasting.php on line 18

@@ -1,0 +1,4 @@
+[14-Mar-2023 13:12:05 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/jjfashion4u/public_html/routes/web.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/jjfashion4u/public_html/routes/web.php on line 21
