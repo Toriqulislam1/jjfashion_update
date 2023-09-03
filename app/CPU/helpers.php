@@ -687,8 +687,8 @@ class Helpers
         $mpdf_view = $view;
         $mpdf_view = $mpdf_view->render();
         $mpdf->WriteHTML($mpdf_view);
-        $mpdf->Output($file_prefix . $file_postfix . '.pdf', 'D');
-       
+        $mpdf->Output($file_prefix . $file_postfix . '.pdf', 'I');
+
     }
 }
 

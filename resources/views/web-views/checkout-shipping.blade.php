@@ -83,7 +83,7 @@
                                            data-target="#collapseThree" {{$shipping_addresses->count()==0?'checked':''}}>
                                     <span class="checkmark"
                                           style="margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 10px"></span>
-                                   
+
                                     <button type="button" class="btn btn-outline" data-toggle="collapse"
                                             data-target="#collapseThree">{{ \App\CPU\translate('Another')}} {{ \App\CPU\translate('address')}}
                                     </button>
@@ -118,7 +118,7 @@
                                                             value="others">{{ \App\CPU\translate('Others')}}</option>
                                                     </select>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">{{ \App\CPU\translate('City')}}<span
                                                             style="color: red">*</span></label>
@@ -179,9 +179,9 @@
                             </ul>
                         </div>
                     </form>
-                    
-                        
-                    <div style="display: {{$billing_input_by_customer==1?'':'none'}}">
+
+
+                      <div style="display: {{$billing_input_by_customer==1?'':'none'}}">
                         <!-- billing methods table-->
                         <h2 class="h4 pb-3 mb-2 mt-5">{{ \App\CPU\translate('choose_billing_address')}}</h2>
 
@@ -225,7 +225,7 @@
                                             data-target="#billing_model" {{$billing_addresses->count()==0?'checked':''}}>
                                         <span class="checkmark"
                                             style="margin-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}: 10px"></span>
-                                        
+
                                         <button type="button" class="btn btn-outline" data-toggle="collapse"
                                                 data-target="#billing_model">{{ \App\CPU\translate('Another')}} {{ \App\CPU\translate('address')}}
                                         </button>
@@ -260,7 +260,7 @@
                                                                 value="others">{{ \App\CPU\translate('Others')}}</option>
                                                         </select>
                                                     </div>
-                                                   
+
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">{{ \App\CPU\translate('City')}}<span
                                                                 style="color: red">*</span></label>
@@ -322,9 +322,9 @@
                             </div>
                         </form>
                     </div>
-                    
-                        
-                    
+                      
+
+
 
                     <!-- Navigation (desktop)-->
                     <div class="row">
@@ -663,7 +663,7 @@
                 }
             });
 
-            
+
         }
     </script>
 @endpush
