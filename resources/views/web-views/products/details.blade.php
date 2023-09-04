@@ -298,7 +298,8 @@
                             <form id="add-to-cart-form" class="mb-2">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $product->id }}">
-                                <div class="position-relative {{Session::get('direction') === "rtl" ? 'ml-n4' : 'mr-n4'}} mb-2">
+
+                                 <div class="position-relative {{Session::get('direction') === "rtl" ? 'ml-n4' : 'mr-n4'}} mb-2">
                                     @if (count(json_decode($product->colors)) > 0)
                                         <div class="flex-start">
                                             <div class="product-description-label mt-2 text-body">{{\App\CPU\translate('color')}}:
@@ -331,6 +332,9 @@
                                         }
                                     @endphp
                                 </div>
+
+
+
                                 @foreach (json_decode($product->choice_options) as $key => $choice)
                                     <div class="row flex-start mx-0">
                                         <div
@@ -431,7 +435,7 @@
                                     </button>
                                 </div>
                             </form>
-{{--  
+                            {{--
                             <div style="text-align:{{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
                                 class="sharethis-inline-share-buttons"></div>  --}}
                         </div>
@@ -1006,6 +1010,7 @@
         getVariantPrice();
         $('#add-to-cart-form input').on('change', function () {
             getVariantPrice();
+
         });
 
         function showInstaImage(link) {
