@@ -582,6 +582,7 @@
                                 </div>
                             </div>
                             <div class="row d-flex justify-content-center mt-3">
+
                                 @foreach($categories as $key=>$category)
 
                                     @if ($key<4)
@@ -618,7 +619,8 @@
                                 </div>
                             </div>
                             <div class="row d-flex justify-content-center mt-4">
-                                @foreach($categories as $key=>$category)
+
+                                    @foreach($categories as $key=>$category)
                                     @if ($key<12)
                                         <div class="text-center"  style="margin: 5px;">
                                             <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
@@ -630,8 +632,11 @@
                                                 style="margin-top: 5px"><strong>{{Str::limit($category->name, 12)}}</strong></p>
                                             </a>
                                         </div>
+
                                     @endif
                                 @endforeach
+
+
                             </div>
                         </div>
                     </div>
@@ -880,10 +885,10 @@
     </div>
     @endif
 
-  
+
             <!-- top sellers -->
 
-     
+
         </div>
     </div>
 
@@ -1511,7 +1516,7 @@
             }
         })
     </script>
-    
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4BDBRGLZS"></script>
 <script>

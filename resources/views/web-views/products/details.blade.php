@@ -346,6 +346,7 @@
                                                 style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 0;">
                                                 @foreach ($choice->options as $key => $option)
                                                     <div>
+
                                                         <li class="for-mobile-capacity">
                                                             <input type="radio"
                                                                 id="{{ $choice->name }}-{{ $option }}"
@@ -976,7 +977,9 @@
         }
         function ColorGetImage(event){
             var color = $(event).data("id");
+
             var image = $('#imageSelect'+color).val();
+
             var previousItem = localStorage.getItem("previousItem");
 
             if(color == image){

@@ -443,7 +443,7 @@
                 @endif
                 @if ($order->billingAddress)
                     <td valign="top">
-                        <span class="h2" >{{\App\CPU\translate('billing_address')}}: </span>
+                        {{--  <span class="h2" >{{\App\CPU\translate('billing_address')}}: </span>  --}}
                         <div class="h4 montserrat-normal-600">
                             <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->billingAddress ? $order->billingAddress['contact_person_name'] : ""}}</p>
                             <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->billingAddress ? $order->billingAddress['phone'] : ""}}</p>
@@ -501,9 +501,12 @@
                     <td>
                         <img style="height:79px; width:79px" class="img-fluid"
                          onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
-                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$details->product['thumbnail']}}"
+                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product->thumbnail}}"
                          alt="Image Description">
+
+
                     </td>
+                    {{--  <td>{{ asset('storage/app/public/product/thumbnail') }}/{{ $product->thumbnail }} </td>  --}}
                     <td class="for-tb">
                         {{$details['product']?$details['product']->name:''}}
                         <br>
