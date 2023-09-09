@@ -299,6 +299,7 @@
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $product->id }}">
 
+
                                  <div class="position-relative {{Session::get('direction') === "rtl" ? 'ml-n4' : 'mr-n4'}} mb-2">
                                     @if (count(json_decode($product->colors)) > 0)
                                         <div class="flex-start">
@@ -310,9 +311,13 @@
                                                     @foreach (json_decode($product->colors) as $key => $color)
                                                         <div>
                                                             <li>
+
                                                                 <input type="radio" id="{{ $product->id }}-color-{{ $key }}" class="colorSelect{{$key}}" data-id="{{ $key }}" onclick="ColorGetImage(event.target)"
                                                                     name="color" value="{{ $color }}"
-                                                                    @if($key == 0) checked @endif>
+                                                                    @if($key == '') checked
+
+                                                                    @endif>
+
                                                                 <label style="background: {{ $color }};"
                                                                     for="{{ $product->id }}-color-{{ $key }}"
                                                                     data-toggle="tooltip"></label>
@@ -351,7 +356,7 @@
                                                             <input type="radio"
                                                                 id="{{ $choice->name }}-{{ $option }}"
                                                                 name="{{ $choice->name }}" value="{{ $option }}"
-                                                                @if($key == 0) checked @endif >
+                                                                @if($key == '') checked @endif >
                                                             <label style="font-size: 12px;"
                                                                 for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
                                                         </li>
@@ -971,22 +976,24 @@
 @push('script')
 
 
-    <script>
+      <script>
         window.onload = function(){
              localStorage.setItem("previousItem",'0');
         }
         function ColorGetImage(event){
             var color = $(event).data("id");
 
+
             var image = $('#imageSelect'+color).val();
 
             var previousItem = localStorage.getItem("previousItem");
+
 
             if(color == image){
 
                 $(".imageSelecting"+color).addClass("active");
                 $(".imageSelectingPreview"+color).addClass("active");
-                localStorage.setItem("previousItem",''+color);
+               localStorage.setItem("previousItem",''+color);
             }
             if(previousItem){
                 if(color != previousItem){
@@ -1008,6 +1015,10 @@
         }
 
     </script>
+
+
+
+
     <script type="text/javascript">
         cartQuantityInitialize();
         getVariantPrice();
@@ -1105,4 +1116,5 @@
     <script type="text/javascript"
             src="https://platform-api.sharethis.com/js/sharethis.js#property=5f55f75bde227f0012147049&product=sticky-share-buttons"
             async="async"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 @endpush

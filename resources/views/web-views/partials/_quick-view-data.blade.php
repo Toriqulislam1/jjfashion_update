@@ -224,7 +224,7 @@
                                                 <input type="radio"
                                                        id="{{ $product->id }}-color-{{ $key }}"
                                                        name="color" value="{{ $color }}"
-                                                       @if($key == 0) checked @endif>
+                                                       @if($key == '') checked @endif>
                                                 <label style="background: {{ $color }};"
                                                        for="{{ $product->id }}-color-{{ $key }}"
                                                        data-toggle="tooltip"></label>
@@ -254,7 +254,7 @@
                                             <input type="radio"
                                                    id="{{ $choice->name }}-{{ $option }}"
                                                    name="{{ $choice->name }}" value="{{ $option }}"
-                                                   @if($key == 0) checked @endif>
+                                                   @if($key == '') checked @endif>
                                             <label for="{{ $choice->name }}-{{ $option }}">{{ $option }}</label>
                                         </span>
                                     @endforeach
