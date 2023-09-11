@@ -1,5 +1,142 @@
 @extends('layouts.front-end.app')
 
+{{--  whatsapp  --}}
+
+<!-- template-style-->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<a href="https://wa.me/+8801727204284" class="float" target="_blank">
+        <i class="fa fa-whatsapp" style="font-size:36px;
+        margin-top: 11px;
+    "></i>
+</a>
+
+
+
+	     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        /* we use dot (.) to target class and
+        hash (#) to target id... */
+        #particles-js {
+            width: 100%;
+            height: 100vh;
+
+            background-position: center;
+            background-size: cover;
+        }
+
+        .center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 100px;
+        }
+        .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #fff;
+  height: 37px;
+}
+
+.topnav {
+  float: left;
+  color: #333;
+  text-align: left;
+  padding: 8px 6px;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.topnav li:hover {
+
+  color: blue;
+}
+
+.topnav a.active {
+  background-color: #fff;
+  color: white;
+}
+li {
+    display: inline-block;
+}
+ul {
+    list-style-type: none;
+}
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(2);
+}
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:100px;
+	left:20px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+.flot{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:170px;
+	left:20px;
+	background-color:#09B83E;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-flot{
+	margin-top:16px;
+}
+
+    </style>
+
+
+
+{{--  whatsapp end --}}
+
+
+
+
+
 @section('title',\App\CPU\translate('Welcome To').' '.$web_config['name']->value)
 
 @push('css_or_js')
