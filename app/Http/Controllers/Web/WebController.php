@@ -253,7 +253,7 @@ class WebController extends Controller
 
         }
 
-        Toastr::info(translate('no_items_in_basket'));
+        // Toastr::info(translate('no_items_in_basket'));
         return redirect('/');
     }
 
@@ -906,10 +906,10 @@ class WebController extends Controller
         $privacy_policy = BusinessSetting::where('type', 'privacy_policy')->first();
         return view('web-views.privacy-policy', compact('privacy_policy'));
     }
-    
+
      public function storeloc()
     {
-        
+
         return view('web-views.store_loc');
     }
 
@@ -1046,16 +1046,16 @@ class WebController extends Controller
             'not_empty'=>$productReviews->count()
         ]);
     }
-    
+
     //new arrival
-    
+
     // public function newarrival(){
-        
-        
+
+
     //     return view('layouts.front-end.partials.newarrival');
     // }
-    
-    
-    
-    
+
+
+
+
 }

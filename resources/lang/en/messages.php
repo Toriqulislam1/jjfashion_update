@@ -1729,4 +1729,5 @@
   'UPDATE_ADDRESSES' => 'UPDATE ADDRESSES',
   'status_not_changable_now' => 'Status not changable now',
   'phone_not_found' => 'Phone not found',
+  'Product all' => 'Product all',
 );

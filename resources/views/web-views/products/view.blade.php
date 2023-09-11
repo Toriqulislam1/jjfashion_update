@@ -2,6 +2,7 @@
 
 @section('title',ucfirst($data['data_from']).' products')
 
+
 @push('css_or_js')
     <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']}}"/>
     <meta property="og:title" content="Products of {{$web_config['name']}} "/>
@@ -203,9 +204,9 @@
     <!-- Page Title-->
     <div class="d-flex justify-content-center align-items-center mb-3" style="min-height: 70px;background:{{$web_config['primary_color']}}10;width:100%;">
 
-            <div class="row text-capitalize">
+            {{--  <div class="row text-capitalize">
                 <span style="font-weight: 600;font-size: 18px;">{{str_replace("_"," ",$data['data_from'])}} {{\App\CPU\translate('products')}} {{ isset($brand_name) ? '('.$brand_name.')' : ''}}</span>
-            </div>
+            </div>  --}}
 
     </div>
     <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">

@@ -568,7 +568,48 @@
         <div class="row">
             @if ($business_mode == 'multi')
                 <div class="col-sm-12 {{Session::get('direction') === "rtl" ? 'pr-0' : 'pl-0'}}">
-                    <div class="card" style="min-height: 380px;">
+                    {{--  Category Mobile View  --}}
+                    <div class="card d-block d-md-none d-lg-none d-xl-none" style="min-height: 380px;">
+                        <div class="card-body">
+                            <div class="grid">
+                                <div class="categories-title">
+                                    <span style="font-weight: 600;font-size: 16px;">{{ \App\CPU\translate('categories')}}</span>
+                                </div>
+                                <div class="categories-view-all">
+                                    <a class="text-capitalize view-all-text"
+                                    href="{{route('categories')}}">{{ \App\CPU\translate('view_all')}}
+                                    <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left-circle mr-1 ml-n1 mt-1 float-left' : 'right-circle ml-1 mr-n1'}}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="custom-mobile-cat mt-3">
+
+                                @foreach($categories as $key=>$category)
+
+                                    @if ($key<4)
+
+                                    <div class="single-custom-cat">
+                                        <div class="text-center"  style="margin: 5px;">
+                                            <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
+                                                <img style="vertical-align: middle; height: 250px;border-radius: 5px;"
+                                                    onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                    src="{{asset("storage/app/public/category/$category->icon")}}"
+                                                    alt="{{$category->name}}">
+                                                 <p class="text-center large "
+                                                    style="margin-top: 5px"><strong>{{Str::limit($category->name, 12)}}</strong></p>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    @endif
+
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    {{--  Category Mobile View End  --}}
+                    {{--  Category Desktop & Others View  --}}
+                    <div class="card d-none d-md-block d-lg-block d-xl-block" style="min-height: 380px;">
                         <div class="card-body">
                             <div class="row d-flex justify-content-between">
                                 <div class="categories-title">
@@ -586,6 +627,7 @@
                                 @foreach($categories as $key=>$category)
 
                                     @if ($key<4)
+
                                     <div class="text-center"  style="margin: 5px;">
                                         <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
                                             <img style="vertical-align: middle; height: 250px;border-radius: 5px;"
@@ -596,15 +638,59 @@
                                                 style="margin-top: 5px"><strong>{{Str::limit($category->name, 12)}}</strong></p>
                                         </a>
                                     </div>
+
                                     @endif
 
                                 @endforeach
                             </div>
                         </div>
                     </div>
+                    {{--  Category Desktop & Others View  --}}
                 </div>
             @else
-                <div class="col-sm-12 pl-0 pr-0">
+
+            {{--  Category Mobile View  --}}
+            <div class="card d-block d-md-none d-lg-none d-xl-none" style="min-height: 380px;">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-between">
+                        <div class="categories-title">
+                            <span style="font-weight: 600;font-size: 16px;">{{ \App\CPU\translate('categories')}}</span>
+                        </div>
+                        <div class="categories-view-all">
+                            <a class="text-capitalize view-all-text"
+                            href="{{route('categories')}}">{{ \App\CPU\translate('view_all')}}
+                            <i class="czi-arrow-{{Session::get('direction') === "rtl" ? 'left-circle mr-1 ml-n1 mt-1 float-left' : 'right-circle ml-1 mr-n1'}}"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="custom-mobile-cat mt-3">
+
+                        @foreach($categories as $key=>$category)
+
+                            @if ($key<4)
+
+                            <div class="custom-single-cat">
+                                <div class="text-center"  style="margin: 5px;">
+                                    <a href="{{route('products',['id'=> $category['id'],'data_from'=>'category','page'=>1])}}">
+                                        <img style="vertical-align: middle; height: 250px;border-radius: 5px;"
+                                            onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                            src="{{asset("storage/app/public/category/$category->icon")}}"
+                                            alt="{{$category->name}}">
+                                         <p class="text-center large "
+                                            style="margin-top: 5px"><strong>{{Str::limit($category->name, 12)}}</strong></p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            @endif
+
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            {{--  Category Mobile View End  --}}
+            {{--  Category Desktop & Others View  --}}
+                <div class="col-sm-12 d-none d-md-block d-lg-block d-xl-block pl-0 pr-0">
                     <div class="card" style="min-height: 232px;">
                         <div class="card-body">
                             <div class="row d-flex justify-content-between">
@@ -641,6 +727,7 @@
                         </div>
                     </div>
                 </div>
+            {{--  Category Desktop & Others View End  --}}
             @endif
 
 

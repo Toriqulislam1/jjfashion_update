@@ -66,8 +66,8 @@ class RegisterController extends Controller
             session()->put('wish_list', Wishlist::where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray());
             Toastr::info('Welcome to ' . Helpers::get_business_settings('company_name') . '!');
             CartManager::cart_to_db();
-             return redirect(session('keep_return_url'));
-            // return redirect(route('user-account'));
+            // return redirect(session('keep_return_url'));
+             return redirect(route('checkout-details'));
         }
         // Toastr::success(translate('registration_success_login_now'));
         //  return $user;

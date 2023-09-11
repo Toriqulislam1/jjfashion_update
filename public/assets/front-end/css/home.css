@@ -330,7 +330,7 @@ widget .btn > i {
     overflow: hidden;
     max-height: 2.4em; /* (Number of lines you want visible) * (line-height) */
     line-height: 1.2em;
-    
+
 }
 
 .flash_deal_product_details .flash-product-title a {
@@ -491,7 +491,7 @@ widget .btn > i {
     .deal-title {
         font-size: 20px !important;
     }
-    
+
     .btn-sm,
     .btn-group-sm > .btn {
         padding: 5px 10px;
@@ -567,4 +567,19 @@ widget .btn > i {
 .featured_deal {
     min-height: 108px;
 
+}
+
+
+/* Custom CSS for Mobile Category */
+.custom-mobile-cat {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.custom-single-cat {
+    max-height: 300px;
+}
+
+.custom-single-cat img {
+    height: 200px!important;
 }

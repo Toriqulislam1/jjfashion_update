@@ -96,7 +96,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div class="form-group d-flex flex-wrap justify-content-between">
@@ -163,7 +163,7 @@
             }
 
         });
-        
+
     </script>
     <script>
 function myFunction() {
