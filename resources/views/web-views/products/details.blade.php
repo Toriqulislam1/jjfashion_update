@@ -439,8 +439,8 @@
                                 </div>
                             </form>
 
-                            <div style="text-align:{{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                class="sharethis-inline-share-buttons"></div>
+                            {{--  <div style="text-align:{{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
+                                class="sharethis-inline-share-buttons"></div>  --}}
                         </div>
                     </div>
                 </div>
