@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                        {{\App\CPU\translate('You are logged in')}}!test
+                        {{\App\CPU\translate('You are logged in')}}!
                 </div>
             </div>
         </div>

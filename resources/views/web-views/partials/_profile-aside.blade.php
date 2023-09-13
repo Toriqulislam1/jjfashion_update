@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="pb-0">
+        {{--  <div class="pb-0">
             <!-- Filter by price-->
             <div class=" sidebarL">
                 <h3 class="widget-title btnF" style="font-weight: 700;">
@@ -158,7 +158,7 @@
                      style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">
                 </div>
             </div>
-        </div>
+        </div>  --}}
         <div class="pb-0">
             <!-- Filter by price-->
             <div class=" sidebarL">
@@ -170,7 +170,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 
