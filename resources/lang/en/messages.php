@@ -1740,4 +1740,5 @@
   'please_choose_color_and_size_options' => 'Please choose color and size options',
   'please_choose_color_&_size_options' => 'Please choose color & size options',
   'please_choose_color_size_options' => 'Please choose color size options',
+  'please_choose_color_asize_options' => 'Please choose color asize options',
 );

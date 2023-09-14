@@ -171,7 +171,8 @@
                                     data-target="#collapseThree">{{ \App\CPU\translate('address')}}
                                 </button>
                                 <div id="accordion">
-                                    <div id="collapseThree"
+                                    <div id=""
+                                    {{-- id =  collapseThree  --}}
                                         class="collapse {{$shipping_addresses->count()==0?'show':''}}"
                                         aria-labelledby="headingThree" data-parent="#accordion">
                                         <div class="card-body">

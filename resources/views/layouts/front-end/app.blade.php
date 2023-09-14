@@ -891,7 +891,7 @@
             Swal.fire({
                 type: 'info',
                 title: 'Cart',
-                text: '{{\App\CPU\translate('please_choose_color_size_options')}}'
+                text: '{{\App\CPU\translate('please_choose_color_and_size_options')}}'
             });
         }
     }

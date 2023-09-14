@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-	<a href="https://wa.me/+8801727204284" class="float" target="_blank">
+	<a href="https://wa.me/+8801756555100" class="float" target="_blank">
         <i class="fa fa-whatsapp" style="font-size:36px;
         margin-top: 11px;
     "></i>
