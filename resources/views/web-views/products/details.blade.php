@@ -3,12 +3,6 @@
 
 @section('title',$product['name'])
 
-{{--  whatsapp  --}}
-{{--  whatsapp end --}}
-
-
-
-
 @push('css_or_js')
     <meta name="description" content="{{$product->slug}}">
     <meta name="keywords" content="@foreach(explode(' ',$product['name']) as $keyword) {{$keyword.' , '}} @endforeach">
@@ -973,41 +967,42 @@
 @push('script')
 
 
-    <script>
+     {{--  <script>
         window.onload = function(){
-             localStorage.setItem("previousItem",'0');
-        }
-        function ColorGetImage(event){
-            var color = $(event).data("id");
-            var image = $('#imageSelect'+color).val();
-            var previousItem = localStorage.getItem("previousItem");
+            localStorage.setItem("previousItem",'0');
+       }
+       function ColorGetImage(event){
+           var color = $(event).data("id");
+           var image = $('#imageSelect'+color).val();
+           var previousItem = localStorage.getItem("previousItem");
 
-            if(color == image){
+           if(color == image){
 
-                $(".imageSelecting"+color).addClass("active");
-                $(".imageSelectingPreview"+color).addClass("active");
-                localStorage.setItem("previousItem",''+color);
-            }
-            if(previousItem){
-                if(color != previousItem){
-                     let element = document.querySelector(".imageSelecting"+previousItem);
-                        element.classList.remove("active");
-                     let element1 = document.querySelector(".imageSelectingPreview"+previousItem);
-                        element1.classList.remove("active");
-                }
+               $(".imageSelecting"+color).addClass("active");
+               $(".imageSelectingPreview"+color).addClass("active");
+               localStorage.setItem("previousItem",''+color);
+           }
+           if(previousItem){
+               if(color != previousItem){
+                    let element = document.querySelector(".imageSelecting"+previousItem);
+                       element.classList.remove("active");
+                    let element1 = document.querySelector(".imageSelectingPreview"+previousItem);
+                       element1.classList.remove("active");
+               }
 
 
-            }else{
-                 let element = document.querySelector(".imageSelecting0");
-                  element.classList.remove("active");
+           }else{
+                let element = document.querySelector(".imageSelecting0");
+                 element.classList.remove("active");
 
-                 let element1 = document.querySelector(".imageSelectingPreview0");
-                  element1.classList.remove("active");
-            }
+                let element1 = document.querySelector(".imageSelectingPreview0");
+                 element1.classList.remove("active");
+           }
 
-        }
+       }
 
-    </script>
+    </script>  --}}
+
     <script type="text/javascript">
         cartQuantityInitialize();
         getVariantPrice();
