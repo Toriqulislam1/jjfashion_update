@@ -44,6 +44,14 @@
     {{--dont touch this--}}
     <!--to make http ajax request to https-->
     <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+{{--  sweet alert  --}}
+    <style>
+        .red-button {
+            background-color: red !important; /* Change the button background color to red */
+        }
+
+    </style>
+{{--  sweet alert custom --}}
     <style>
         body {
             background-color: #f7f8fa94;
@@ -633,6 +641,7 @@
     </style>
 
     <style>
+
         .dropdown-menu {
             min-width: 304px !important;
             margin-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: -8px !important;
@@ -889,9 +898,12 @@
             });
         } else {
             Swal.fire({
-                type: 'info',
+
+                {{--  type: 'info',  --}}
                 title: 'Cart',
-                text: '{{\App\CPU\translate('please_choose_color_and_size_options')}}'
+                text: '{{\App\CPU\translate('please_choose_color_and_size_options')}}',
+                confirmButtonColor: "#FF4444",
+
             });
         }
     }

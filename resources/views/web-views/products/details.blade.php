@@ -310,12 +310,20 @@
                                                     @foreach (json_decode($product->colors) as $key => $color)
                                                         <div>
                                                             <li>
+
+
+                                                                
                                                                 <input type="radio" id="{{ $product->id }}-color-{{ $key }}" class="colorSelect{{$key}}" data-id="{{ $key }}" onclick="ColorGetImage(event.target)"
                                                                     name="color" value="{{ $color }}"
                                                                     @if($key == '') checked @endif>
                                                                 <label style="background: {{ $color }};"
                                                                     for="{{ $product->id }}-color-{{ $key }}"
                                                                     data-toggle="tooltip"></label>
+
+
+
+
+
                                                             </li>
                                                         </div>
                                                     @endforeach
@@ -967,7 +975,7 @@
 @push('script')
 
 
-     {{--  <script>
+      <script>
         window.onload = function(){
             localStorage.setItem("previousItem",'0');
        }
@@ -1001,7 +1009,7 @@
 
        }
 
-    </script>  --}}
+    </script>
 
     <script type="text/javascript">
         cartQuantityInitialize();
