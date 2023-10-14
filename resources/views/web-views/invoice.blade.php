@@ -13,6 +13,10 @@
             color: #333542;
         }
 
+        body{
+            font-family: 'Montserrat', sans-serif;
+        }
+
         /* IE 6 */
         * html .footer {
             position: absolute;
@@ -130,7 +134,7 @@
             text-align: left;
             color: white;
             {{--background-color:  {{$web_config['primary_color']}};--}}
-              background-color: {{$web_config['primary_color']}};;
+              background-color: {{$web_config['primary_color']}};
         }
 
         .bg-secondary {
@@ -249,7 +253,9 @@
         .triangle {
             width: 0;
             height: 0;
-            border: 22px solid{{$web_config['primary_color']}};
+
+            border: 22px solid{{$web_config['primary_color']}};;
+
             border-top-color: transparent;
             border-bottom-color: transparent;
             border-right-color: transparent;
@@ -319,6 +325,10 @@
             color: white !important;
         }
 
+        .text-white {
+            color: rgb(14, 14, 14) !important;
+        }
+
         .bs-0 {
             border-spacing: 0;
         }
@@ -327,10 +337,12 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+{{--  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">  --}}
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body>
+
 @php
     use App\Model\BusinessSetting;
     $company_phone =BusinessSetting::where('type', 'company_phone')->first()->value;
@@ -340,141 +352,102 @@
     $company_mobile_logo =BusinessSetting::where('type', 'company_mobile_logo')->first()->value;
 @endphp
 
-<div class="first" style="display: block; height:auto !important;background-color: #E6E6E6">
-    <table class="content-position">
+    <table>
         <tr>
-            <th style="text-align: left">
-                <img height="70" width="200" src="{{asset("storage/app/public/company/$company_web_logo")}}"
-                     alt="">
+            <th style="text-align: left; width: 40%">
+                <div><img src="https://jjfashion4u.com/storage/app/public/company/2023-02-01-63da69b248a48.png" alt="" width="100"></div>
+                <br>
+                <p>Police Plaza Concord Shopping Mall 4th Floor, Lift-3, Shop No. 406, Gulshan.</p>
             </th>
-            <th style="text-align: right">
-                <h1 style="color: #030303; margin-bottom: 0px; font-size: 30px;text-transform: capitalize">{{\App\CPU\translate('invoice')}}</h1>
-                @if($order['seller_is']!='admin' && $order['seller']->gst != null)
-                    <h5 style="color: #030303; margin-bottom: 0px;text-transform: capitalize">{{\App\CPU\translate('GST')}}
-                        : {{ $order['seller']->gst }}</h5>
-                @endif
+            <th style="width: 60%; text-align:right">
+                <h2 style="font-size: 24px">{{\App\CPU\translate('INVOICE')}}</h2>
+                <div style="font-size: 17px;letter-spacing: 1px;text-transform:uppercase;color:rgba(46, 45, 45, 0.4)">#{{ $order->id }}</div>
+                <br>
+                <div style="font-weight: bold">{{\App\CPU\translate('Date:')}} {{date('d-m-Y h:i:s a',strtotime($order['created_at']))}}</div>
             </th>
         </tr>
-    </table>
-
-    <table class="bs-0">
         <tr>
-            <th class="bg-primary content-position-y" style="padding-right: 0; height: 44px; text-align: left">
-                <div>
-                    <span class="h4 inline text-white text-uppercase">{{\App\CPU\translate('invoice')}} # </span>
-                    <span class="inline">
-                        <span class="h4 text-white" style="display: inline">{{ $order->id }}</span>
-                    </span>
+            <td style="padding: 0;margin-left:0;">
+                <br>
+                <div style="font-weight: bold">{{\App\CPU\translate('Shipping to:')}}</div>
+                <div style="text-align: left">
+                    <p>&nbsp;</p>
+                    <div>Name: {{$order->customer !=null? $order->customer['f_name'].' '.$order->customer['l_name']:\App\CPU\translate('name_not_found')}}</div>
+                    <div>Email: {{$order->customer !=null? $order->customer['email']:\App\CPU\translate('email_not_found')}}</div>
+                    <!--<p>{{$order->customer !=null? $order->customer['phone']:\App\CPU\translate('phone_not_found')}}</p>-->
+                    <div>Phone: {{$order->customer['phone'] !=null? $order->customer['phone']: $order->shippingAddress['phone']}}</div>
+
+                    <div>Address: {{$order->shippingAddress ? $order->shippingAddress['address'] : ""}}</div>
+                    <div>City: {{$order->shippingAddress ? $order->shippingAddress['city'] : ""}} {{$order->shippingAddress ? $order->shippingAddress['zip'] : ""}}</div>
                 </div>
-            </th>
-            <th class="bg-secondary content-position-y" style="text-align: right; height: 44px;">
-                <span class="h4 inline"
-                      style="color: #030303;padding-right: 15px;">{{\App\CPU\translate('date')}} : </span>
-                <span class="inline h4">
-                    <strong style="color: #030303; ">{{date('d-m-Y h:i:s a',strtotime($order['created_at']))}}</strong>
-                </span>
-            </th>
+            </td>
         </tr>
     </table>
-</div>
-{{--<hr>--}}
-{{--<table>--}}
-@if ($order->order_type == 'default_type')
-<div class="row">
-    <section>
-        <table class="content-position-y" style="width: 100%">
-            <tr>
-                <td valign="top">
-                    <span class="h2" style="margin: 0px;">{{\App\CPU\translate('shipping_to')}}: </span>
-                    <div class="h4 montserrat-normal-600">
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer['email']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->customer['phone']}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['address'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->shippingAddress ? $order->shippingAddress['city'] : ""}} {{$order->shippingAddress ? $order->shippingAddress['zip'] : ""}}</p>
-                        
-                    </div>
-                </td>
-                <td valign="top">
-                    <span class="h2" >{{\App\CPU\translate('billing_address')}}: </span>
-                    <div class="h4 montserrat-normal-600">
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->billingAddress ? $order->billingAddress['contact_person_name'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->billingAddress ? $order->billingAddress['phone'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->billingAddress ? $order->billingAddress['address'] : ""}}</p>
-                        <p style=" margin-top: 6px; margin-bottom:0px;">{{$order->billingAddress ? $order->billingAddress['city'] : ""}} {{$order->billingAddress ? $order->billingAddress['zip'] : ""}}</p>
-                        
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </section>
-</div>
-@else
-<div class="row">
-    <section>
-        <table class="content-position-y" style="width: 100%">
-            <tr>
-                <td valign="top">
-                    <span class="h2" style="margin: 0px;">{{\App\CPU\translate('POS_order')}} </span>
-                    
-                </td>
-                
-            </tr>
-        </table>
-    </section>
-</div>
-@endif
-{{--</table>--}}
 
-<br>
-
-<div class="row" style="margin: 20px 0; display:block; height:auto !important ;">
-    <div class=" content-height content-position-y" style="">
-        <table class="customers bs-0">
-            <thead>
-            <tr class="for-th">
-                <th class="for-th bg-primary">{{\App\CPU\translate('no.')}}</th>
-                <th class="">image</th>
-                
-                <th class="for-th bg-primary">{{\App\CPU\translate('item_description')}}</th>
-                <th class="for-th bg-secondary for-th-font-bold" style="color: black">
-                    {{\App\CPU\translate('unit_price')}}
-                </th>
-                <th class="for-th for-th-font-bold" style="color: black">
-                    {{\App\CPU\translate('qty')}}
-                </th>
-                <th class="for-th for-th-font-bold" style="color: black">
-                    {{\App\CPU\translate('total')}}
-                </th>
+    {{--  Product Information Table  --}}
+    <br><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="6"><hr/>
             </tr>
-            </thead>
-            @php
-                $subtotal=0;
-                $total=0;
-                $sub_total=0;
-                $total_tax=0;
-                $total_shipping_cost=0;
-                $total_discount_on_product=0;
-                $extra_discount=0;
-            @endphp
-            <tbody>
+            <tr>
+                <th style="font-weight: bold;text-align:center">#</th>
+                <th style="font-weight: bold;text-align:center">&nbsp;</th>
+                <th style="font-weight: bold;text-align:center">Item & Description</th>
+                <th style="font-weight: bold;text-align:center">Rate</th>
+                <th style="font-weight: bold;text-align:center">QTY</th>
+                <th style="font-weight: bold;text-align:center">Amount</th>
+            </tr>
+            <tr>
+                <th colspan="6"><hr/>
+            </tr>
+        </thead>
+        @php
+            $subtotal=0;
+            $total=0;
+            $sub_total=0;
+            $total_tax=0;
+            $total_shipping_cost=0;
+            $total_discount_on_product=0;
+            $ext_discount=0;
+        @endphp
+
+        <tbody>
             @foreach($order->details as $key=>$details)
-                @php $subtotal=($details['price'])*$details->qty @endphp
-                <tr class="for-tb" style=" border: 1px solid #D8D8D8;margin-top: 5px">
-                    <td class="for-tb for-th-font-bold">{{$key+1}}</td>
-                    <td>
-                        image
-                    </td>
-                    <td class="for-tb">
-                        {{$details['product']?$details['product']->name:''}}
+                @php
+                $subtotal=($details['price'])*$details->qty;
+                $product =  App\Model\Product::findOrFail($details->product_id);
+            @endphp
+            <tr>
+                <td style="text-align: center;font-weight:bold">{{$key+1}}</td>
+                <td>
+                    <img style="height:79px; width:79px" class="img-fluid"
+                    onerror="this.src='{{asset('public/assets/back-end/img/160x160/img2.jpg')}}'"
+                    src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product->thumbnail}}"
+                    alt="Image Description">
+                </td>
+                <td>
+                    <div style="text-align: center;padding-top:10px;padding-bottom:10px">
+                        <span style="font-weight: bold;color:#1f1f1f">{{$details['product']?$details['product']->name:''}}</span>
                         <br>
                         {{\App\CPU\translate('variation')}} : {{$details['variant']}}
-                    </td>
-                    <td class="for-tb for-th-font-bold">{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($details['price']))}}</td>
-                    <td class="for-tb">{{$details->qty}}</td>
-                    <td class="for-tb for-th-font-bold">{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($subtotal))}}</td>
-                </tr>
-
+                    </div>
+                </td>
+                <td>
+                    <div style="font-family: 'Montserrat' ">
+                        {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($details['price']))}}
+                    </div>
+                </td>
+                <td>
+                    <div>{{$details->qty}}</div>
+                </td>
+                <td>
+                    <div>
+                        {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($subtotal))}}
+                    </div>
+                </td>
+            </tr>
                 @php
                     $sub_total+=$details['price']*$details['qty'];
                     $total_tax+=$details['tax'];
@@ -483,133 +456,69 @@
                     $total+=$subtotal;
                 @endphp
             @endforeach
-            </tbody>
+        </tbody>
+    </table>
 
-        </table>
-    </div>
-</div>
-<?php
-    if ($order['extra_discount_type'] == 'percent') {
-        $extra_discount = ($sub_total / 100) * $order['extra_discount'];
-    } else {
-        $extra_discount = $order['extra_discount'];
-    }
-    
-?>
+    <?php
+        if ($order['extra_discount_type'] == 'percent') {
+            $ext_discount = ($sub_total / 100) * $order['extra_discount'];
+        } else {
+            $ext_discount = $order['extra_discount'];
+        }
+    ?>
+
+<br> <br>
+
+ {{--  custom design end  --}}
+
 @php($shipping=$order['shipping_cost'])
-<div class="content-position-y" style=" display:block; height:auto !important;margin-top: 40px">
-    <table>
+
+<table>
+    <thead>
         <tr>
-            <th style="text-align: left; vertical-align: text-top;width:30%;">
-                <h4 style="color: #130505 !important; margin:0px;">{{\App\CPU\translate('payment_details')}}</h4>
-                <h5 style="color: #414141 !important ; padding-top:5px;">{{ str_replace('_',' ',$order->payment_method) }}</h5>
-                <p style="color: #414141 !important ; padding-top:5px;">{{$order->payment_status}}
+            <th colspan="2"><hr/>
+        </tr>
+        <tr>
+            <th style="width: 40%;text-align:left;background:right">
+                <div><b>{{\App\CPU\translate('payment_details')}}</b></div>
+                <p>{{$order->payment_status}}
                     , {{date('y-m-d',strtotime($order['created_at']))}}</p>
-
-                    @if ($order->delivery_type !=null)
-                    <h4 style="color: #130505 !important; margin:0px;text-transform: capitalize;">{{\App\CPU\translate('delivery_info')}} </h4>
-                    @if ($order->delivery_type == 'self_delivery')
-                        <p style="color: #414141 !important ; padding-top:5px;">
-                            <span style="text-transform: capitalize">
-                                {{\App\CPU\translate('self_delivery')}}
-                            </span>
-                            <br>
-                            <span style="text-transform: capitalize">
-                                {{\App\CPU\translate('delivery_man_name')}} : {{$order->delivery_man['f_name'].' '.$order->delivery_man['l_name']}}
-                            </span>
-                            <br>
-                            <span style="text-transform: capitalize">
-                                {{\App\CPU\translate('delivery_man_phone')}} : {{$order->delivery_man['phone']}}
-                            </span>
-                        </p>
-                    @else
-                    <p style="color: #414141 !important ; padding-top:5px;">
-                        <span>
-                            {{$order->delivery_service_name}}
-                        </span>
-                        <br>
-                        <span>
-                            {{\App\CPU\translate('tracking_id')}} : {{$order->third_party_delivery_tracking_id}}
-                        </span>
-                    </p>
-                    @endif
-                @endif
             </th>
-
-            <th style="text-align: right;width:70%;">
-                <table style="width: 96%;margin-left:41%; display: inline " class="text-right sm-padding strong bs-0">
-                    <tbody>
-
+            <th>
+                <table>
                     <tr>
-                        <th class="gry-color text-left"><b>{{\App\CPU\translate('sub_total')}}</b></th>
-                        <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($sub_total))}}</td>
-
+                        <th style="text-align: right"><b>{{\App\CPU\translate('sub_total')}}</b></th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($sub_total))}}</th>
                     </tr>
                     <tr>
-                        <th class="gry-color text-left text-uppercase"><b>{{\App\CPU\translate('tax')}}</b></th>
-                        <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_tax))}}</td>
+                        <th style="text-align: right"><b>{{\App\CPU\translate('tax')}}: </b></th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_tax))}}</th>
                     </tr>
-                    @if($order->order_type == 'default_type')
                     <tr>
-                        <th class="gry-color text-left"><b>{{\App\CPU\translate('shipping')}}</b></th>
-                        <td>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($shipping))}}</td>
+                        <th style="text-align: right"><b>{{\App\CPU\translate('shipping')}}</b></th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($shipping))}}</th>
                     </tr>
-                    @endif
                     <tr>
-                        <th class="gry-color text-left"><b>{{\App\CPU\translate('coupon_discount')}}</b></th>
-                        <td>
-                            - {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->discount_amount))}}</td>
+                        <th style="text-align: right"><b>{{\App\CPU\translate('coupon_discount')}}</b></th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->discount_amount))}}</th>
                     </tr>
-                    <tr class="border-bottom">
-                        <th class="gry-color text-left"><b>{{\App\CPU\translate('discount_on_product')}}</b></th>
-                        <td>
-                            - {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_discount_on_product))}}</td>
+                    <tr>
+                        <th style="text-align: right"><b>{{\App\CPU\translate('discount_on_product')}}</b></th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_discount_on_product))}}</th>
                     </tr>
-                    @if ($order->order_type != 'default_type')
-                    <tr class="border-bottom">
-                        <th class="gry-color text-left"><b>{{\App\CPU\translate('extra_discount')}}</b></th>
-                        <td>
-                            - {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($extra_discount))}}</td>
+                    <tr>
+                        <th colspan="2"><hr/></th>
                     </tr>
-                    @endif
-                    <tr class="bg-primary">
-                        <th class="text-left"><b class="text-white">{{\App\CPU\translate('total')}}</b></th>
-                        <td class="text-white">
-                            {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->order_amount))}}
-                        </td>
+                    <tr style="border-top:2px solid #000;background: rgb(241, 239, 239);padding:10px">
+                        <th style="text-align: right;font-size:18px"><b>{{\App\CPU\translate('total')}}: </b></th>
+                        <th style="text-align:right;font-size: 16px; color: #121111"><b>Tk. {{$order->order_amount}}</b></th>
                     </tr>
-                    </tbody>
                 </table>
             </th>
         </tr>
-    </table>
-</div>
-<br>
-<br><br><br>
+    </thead>
+</table>
 
-<div class="row">
-    <section>
-        <table style="width: 100%">
-            <tr>
-                <th class="content-position-y bg-primary"
-                    style="padding-top:10px; padding-bottom:10px;text-align: left; width: 50%">
-                    <div class="text-white" style="padding-top:5px; padding-bottom:2px;"><i
-                            class="fa fa-phone text-white"></i> {{\App\CPU\translate('phone')}}
-                        : {{\App\Model\BusinessSetting::where('type','company_phone')->first()->value}}</div>
-                    <div class="text-white" style="padding-top:5px; padding-bottom:2px;"><i
-                            class="fa fa-globe text-white" aria-hidden="true"></i> {{\App\CPU\translate('website')}}
-                        : {{url('/')}}</div>
-                    <div class="text-white" style="padding-top:5px; padding-bottom:2px;"><i
-                            class="fa fa-envelope text-white" aria-hidden="true"></i> {{\App\CPU\translate('email')}}
-                        : {{$company_email}}</div>
-                </th>
-                <th class="bg-secondary content-position-y" style="text-align: right; ">
-
-                </th>
-            </tr>
-        </table>
-    </section>
-</div>
 
 
 </body>

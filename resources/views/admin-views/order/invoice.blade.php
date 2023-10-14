@@ -436,7 +436,7 @@
                 </td>
                 <td>
                     <div style="font-family: 'Montserrat' ">
-                       TK. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($details['price']))}}
+                        {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($details['price']))}}
                     </div>
                 </td>
                 <td>
@@ -444,7 +444,7 @@
                 </td>
                 <td>
                     <div>
-                       TK. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($subtotal))}}
+                        {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($subtotal))}}
                     </div>
                 </td>
             </tr>
@@ -488,30 +488,30 @@
                 <table>
                     <tr>
                         <th style="text-align: right"><b>{{\App\CPU\translate('sub_total')}}</b></th>
-                        <th style="text-align:right">Tk. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($sub_total))}}</th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($sub_total))}}</th>
                     </tr>
                     <tr>
                         <th style="text-align: right"><b>{{\App\CPU\translate('tax')}}: </b></th>
-                        <th style="text-align:right">Tk. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_tax))}}</th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_tax))}}</th>
                     </tr>
                     <tr>
                         <th style="text-align: right"><b>{{\App\CPU\translate('shipping')}}</b></th>
-                        <th style="text-align:right">Tk. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($shipping))}}</th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($shipping))}}</th>
                     </tr>
                     <tr>
                         <th style="text-align: right"><b>{{\App\CPU\translate('coupon_discount')}}</b></th>
-                        <th style="text-align:right">Tk. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->discount_amount))}}</th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->discount_amount))}}</th>
                     </tr>
                     <tr>
                         <th style="text-align: right"><b>{{\App\CPU\translate('discount_on_product')}}</b></th>
-                        <th style="text-align:right">Tk. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_discount_on_product))}}</th>
+                        <th style="text-align:right"> {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($total_discount_on_product))}}</th>
                     </tr>
                     <tr>
                         <th colspan="2"><hr/></th>
                     </tr>
                     <tr style="border-top:2px solid #000;background: rgb(241, 239, 239);padding:10px">
                         <th style="text-align: right;font-size:18px"><b>{{\App\CPU\translate('total')}}: </b></th>
-                        <th style="text-align:right;font-size: 16px; color: #121111"><b>Tk. {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($order->order_amount))}}</b></th>
+                        <th style="text-align:right;font-size: 16px; color: #121111"><b>Tk. {{$order->order_amount}}</b></th>
                     </tr>
                 </table>
             </th>
