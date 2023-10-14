@@ -1742,4 +1742,8 @@
   'please_choose_color_size_options' => 'Please choose color size options',
   'please_choose_color_asize_options' => 'Please choose color asize options',
   'cart_empty_warning' => 'Cart empty warning',
+  'INVOICE' => 'INVOICE',
+  'Date:' => 'Date:',
+  'Dalivery Address:' => 'Dalivery Address:',
+  'Shipping to:' => 'Shipping to:',
 );

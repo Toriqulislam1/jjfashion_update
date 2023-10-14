@@ -1239,7 +1239,7 @@
         }
     });
 
-    const img = document.getElementByTagName("img")
+    var img = document.getElementsByTagName("img");
     img.addEventListener("error", function (event) {
         event.target.src = '{{asset('public/assets/front-end/img/image-place-holder.png')}}';
         event.onerror = null

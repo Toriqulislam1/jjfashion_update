@@ -233,7 +233,7 @@
                                                     @foreach (json_decode($product->images) as $key => $photo)
                                                         <div class="cz-thumblist">
                                                             <a class="cz-thumblist-item d-flex align-items-center justify-content-center imageSelecting{{$key}} {{$key==0?'active':''}}"
-                                                            href="#image{{$key}}" >
+                                                            href="#image{{$key}}">
                                                                 <input type="hidden" id="imageSelect{{$key}}" value="{{$key}}">
                                                                 <img
                                                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
@@ -311,26 +311,35 @@
                                                         <div>
                                                             <li>
 
-
-                                                                
-                                                                <input type="radio" id="{{ $product->id }}-color-{{ $key }}" class="colorSelect{{$key}}" data-id="{{ $key }}" onclick="ColorGetImage(event.target)"
+                                                                <input type="radio" id="{{ $product->id }}-color-{{ $key }}" class="colorSelect{{$key}}" class="test" data-id="{{ $key }}" onclick="ColorGetImage(event.target)"
                                                                     name="color" value="{{ $color }}"
                                                                     @if($key == '') checked @endif>
                                                                 <label style="background: {{ $color }};"
                                                                     for="{{ $product->id }}-color-{{ $key }}"
                                                                     data-toggle="tooltip"></label>
 
-
-
-
-
                                                             </li>
                                                         </div>
                                                     @endforeach
+
                                                 </ul>
                                             </div>
                                         </div>
                                     @endif
+                                    {{--  custom  --}}
+
+                                    <a class="cz-thumblist-item d-flex align-items-center justify-content-center imageSelecting{{$key}} {{$key==0?'active':''}}"
+                                    href="#image{{$key}}" data-name="ColorNameHere">
+                                    <input type="hidden" id="imageSelect{{$key}}" value="{{$key}}">
+                                    <img
+                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                        src="{{asset("storage/app/public/product/$photo")}}"
+                                        alt="Product thumb">
+                                </a>
+
+
+
+                                    {{-- end custom  --}}
                                     @php
                                         $qty = 0;
                                         if(!empty($product->variation)){
@@ -975,41 +984,30 @@
 @push('script')
 
 
-      <script>
-        window.onload = function(){
-            localStorage.setItem("previousItem",'0');
-       }
-       function ColorGetImage(event){
-           var color = $(event).data("id");
-           var image = $('#imageSelect'+color).val();
-           var previousItem = localStorage.getItem("previousItem");
+<script>
+    window.onload = function(){
+        localStorage.setItem("previousItem", '0');
+    }
 
-           if(color == image){
+    function ColorGetImage(event){
+        var color = $(event).data("id");
+        var image = $('#imageSelect'+color).val();
+        var previousItem = localStorage.getItem("previousItem");
 
-               $(".imageSelecting"+color).addClass("active");
-               $(".imageSelectingPreview"+color).addClass("active");
-               localStorage.setItem("previousItem",''+color);
-           }
-           if(previousItem){
-               if(color != previousItem){
-                    let element = document.querySelector(".imageSelecting"+previousItem);
-                       element.classList.remove("active");
-                    let element1 = document.querySelector(".imageSelectingPreview"+previousItem);
-                       element1.classList.remove("active");
-               }
+        if(color == image){
+            // Remove 'active' class from all images before adding it to the selected one
+            $(".cz-preview-item").removeClass("active");
+            $(".imageSelectingPreview"+color).addClass("active");
+            localStorage.setItem("previousItem", ''+color);
+        }
 
+        if(previousItem && color != previousItem){
+            // Remove 'active' class from the previously selected image
+            $(".imageSelectingPreview"+previousItem).removeClass("active");
+        }
+    }
+</script>
 
-           }else{
-                let element = document.querySelector(".imageSelecting0");
-                 element.classList.remove("active");
-
-                let element1 = document.querySelector(".imageSelectingPreview0");
-                 element1.classList.remove("active");
-           }
-
-       }
-
-    </script>
 
     <script type="text/javascript">
         cartQuantityInitialize();
