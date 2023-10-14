@@ -326,20 +326,6 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{--  custom  --}}
-
-                                    <a class="cz-thumblist-item d-flex align-items-center justify-content-center imageSelecting{{$key}} {{$key==0?'active':''}}"
-                                    href="#image{{$key}}" data-name="ColorNameHere">
-                                    <input type="hidden" id="imageSelect{{$key}}" value="{{$key}}">
-                                    <img
-                                        onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                        src="{{asset("storage/app/public/product/$photo")}}"
-                                        alt="Product thumb">
-                                </a>
-
-
-
-                                    {{-- end custom  --}}
                                     @php
                                         $qty = 0;
                                         if(!empty($product->variation)){
@@ -1005,6 +991,8 @@
             // Remove 'active' class from the previously selected image
             $(".imageSelectingPreview"+previousItem).removeClass("active");
         }
+
+        $("#image"+colorName).click();
     }
 </script>
 
